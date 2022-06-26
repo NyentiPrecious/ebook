@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dohvf</title>
+</head>
+
+<style>
+
+/* body{
+    line-height: 1.5;
+    font-family: sans-serif;
+}
+*{
+    margin:0;
+    box-sizing: border-box;
+} */
+
+/* .row{
+    display: flex;
+    flex-wrap: wrap;
+} */
+img{
+    max-width: 50%;
+    vertical-align: middle;
+}
+.gallery{
+   width: 100%;
+   display: block;
+   min-height: 20vh;
+   background-color: #2a2932;
+   padding: 100px 0;
+}
+
+.container{
+    max-width: 1170px;
+    margin:auto;
+}
+
+.gallery .gallery-filter{
+   padding: 0 15px;
+   width: 100%;
+   text-align: center;
+   margin-bottom: 40px;
+}
+.gallery .gallery-filter .filter-item{
+   color: #ffffff;
+   font-size: 17px;
+   border: 2px solid white;
+   text-transform: uppercase;
+   display: inline-block;
+   border-radius: 20px;
+   margin-right: 8px;
+   cursor: pointer;
+   padding: 8px 20px 8px 20px;
+   line-height: 1.2;
+   transition: all 0.3s ease;
+}
+.gallery .gallery-filter .filter-item.active{
+  color: white;
+  border-color : #16b5ef;
+  background: #16b5ef;
+}
+
+/* .gallery .gallery-item{
+    width: calc(100% / 3);
+    padding: 15px;
+
+} */
+.gallery .gallery-item-inner img{
+    width: 100%;
+  border: 3px solid #d4dad9;
+}
+.gallery .gallery-item.show{
+    animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.gallery .gallery-item.hide{
+    display: none;
+}
+@media(max-width: 491px){
+    .gallery .gallery-item{
+        width: 50%;
+    }
+}
+@media(max-width: 667px){
+    .gallery .gallery-item{
+        width: 100%;
+    }
+    .gallery .gallery-filter .filter-item{
+        margin-bottom: 10px;
+    }
+}
+
+</style>
+
+<style>
+    /* body {
+font-family: Verdana, sans-serif;
+margin: 0;
+}
+
+* {
+box-sizing: border-box;
+} */
+
+ul,li{
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+ul{
+width: 100%;
+text-align: center;
+}
+
+li{
+display: inline-block;
+padding-top: 20px;
+padding-bottom: 20px;
+padding-right: 10px;
+}
+
+li a{
+text-decoration: none;
+border-bottom: 1px solid transparent;
+padding-bottom: 10px;
+color: black;
+}
+
+li a:hover{
+border-bottom: 1px solid grey;
+transition: all .8s;
+-webkit-transition: all .8s;
+}
+
+h2,
+header{
+clear: both;   
+}
+
+h2{
+margin-bottom: 20px;
+margin-top: 0;
+}
+
+.mobile_nav{
+display: none;
+}
+
+.copyright{
+max-width: 1300px;
+margin: auto;
+padding-left: 15px;
+
+}
+.main_container{
+margin-top: 50px;
+max-width: 1300px;
+margin: auto;
+padding-left: 8px;
+padding-right: 8px;
+}
+
+.row > .column {
+padding: 0 8px;
+margin-bottom: 15px;
+}
+
+
+.row:after {
+content: "";
+/* display: table; */
+display: flex;
+    flex-wrap: wrap;
+clear: both;
+}
+
+.column {
+float: left;
+width: 10%;
+
+}
+
+/* The Modal (background) */
+.modal {
+display: none;
+position: fixed;
+z-index: 1;
+padding-top: 100px;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+position: relative;
+background-color: #fefefe;
+margin: auto;
+padding: 0;
+width: 90%;
+max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+color: white;
+position: absolute;
+top: 10px;
+right: 25px;
+font-size: 35px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: #999;
+text-decoration: none;
+cursor: pointer;
+}
+
+.mySlides {
+display: none;
+width: 500px;
+max-width: 100%;
+margin: auto;
+}
+
+.cursor {
+cursor: pointer
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+cursor: pointer;
+position: absolute;
+top: 50%;
+width: auto;
+padding: 16px;
+margin-top: -50px;
+color: white;
+font-weight: bold;
+font-size: 20px;
+transition: 0.6s ease;
+border-radius: 0 3px 3px 0;
+user-select: none;
+-webkit-user-select: none;
+background: black;
+}
+
+/* Position the "next button" to the right */
+.next {
+right: 0;
+border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+color: #f2f2f2;
+font-size: 12px;
+padding: 8px 12px;
+position: absolute;
+top: 0;
+}
+
+/* img {
+margin-bottom: -4px;
+} */
+
+.caption-container {
+text-align: center;
+background-color: black;
+padding: 2px 16px;
+color: white;
+}
+
+.image {
+opacity: 0.6;
+}
+
+.active,
+.image:hover {
+opacity: 1;
+}
+
+img.hover-shadow {
+transition: 0.3s
+}
+
+.hover-shadow:hover {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+footer{
+background: black;
+padding-top: 10px;
+padding-bottom: 10px;
+color: white;
+}
+
+footer a{
+color: white;
+}
+
+@media (max-width: 760px){
+.column {
+    float: left;
+    width: 50%;
+}
+}
+
+
+@media (max-width: 600px){
+.mobile_nav {
+    display: block;
+    width: 100%;
+}
+
+.mobile_nav:hover{
+    cursor: pointer;
+}
+
+i.fa.fa-bars {
+    padding: 10px;
+    font-size: 30px;
+    color: #ccc;
+    background: black;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* ul#primary-navigation{
+    
+} */
+
+ ul#primary-navigation li{
+    display: block;
+     padding: 0;
+     display: none;
+}
+
+ ul#primary-navigation li a{
+    border: 0;
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+     
+}
+
+ul#primary-navigation li a:hover{
+    border: 0;
+    background: black;
+    color: #ccc;
+}
+
+ul#primary-navigation.open > li {
+    display: block;
+}
+.main_container {
+    margin-top: 10px;
+}
+
+}
+@media (max-width: 400px){
+.column {
+    float: left;
+    width: 100%;
+}
+}
+</style>
+
+<body>
+    
+    <section class="gallery">
+        <div class="container">
+    
+
+            <div class="row">
+                <div class="gallery-filter">
+                  <span class="filter-item active" data-filter="all">all</span>
+                  <span class="filter-item" data-filter="watch">Watch</span>
+                  <span class="filter-item" data-filter="headphone">headphone</span>
+                  <span class="filter-item" data-filter="camera">camera</span>
+                  <span class="filter-item" data-filter="phone">Phone</span>
+                </div>
+            </div>
+        </div>
+
+
+               <div class="row">
+
+                <!--1st gallery item start -->
+              
+               
+               
+               <!--2nd gallery item start -->
+                <div class="gallery-item headphone">
+                 <div class="gallery-item-inner">
+                   <!-- <img src="./subs/book7.avif" alt="headphone"> -->
+                   <div class="column">
+                    <img src="./subs/book1.avif" alt="headphone" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                  </div>
+                 </div>
+                </div>
+
+                <div class="gallery-item headphone">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book7.avif" alt="headphone"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" alt="headphone" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+
+                   <div class="gallery-item headphone">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book7.avif" alt="headphone"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" alt="headphone" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+   
+                   <div class="gallery-item headphone">
+                       <div class="gallery-item-inner">
+                         <!-- <img src="./subs/book7.avif" alt="headphone"> -->
+                         <div class="column">
+                <img src="./subs/book1.avif" alt="headphone" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+                        </div>
+                       </div>
+                      </div>
+                  
+               
+               
+                   <div class="gallery-item camera">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book8.avif" alt="camera"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(5)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+               <!--3rd gallery item start -->
+                <div class="gallery-item camera">
+                 <div class="gallery-item-inner">
+                   <!-- <img src="./subs/book8.avif" alt="camera"> -->
+                   <div class="column">
+                    <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(6)" class="hover-shadow cursor">
+                  </div>
+                 </div>
+                </div>
+                <div class="gallery-item camera">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book8.avif" alt="camera"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(7)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+               
+               
+               <!--4th gallery item start -->
+                <div class="gallery-item headphone">
+                 <div class="gallery-item-inner">
+                   <!-- <img src="./subs/book10.avif" alt="headphone"> -->
+                   <div class="column">
+                    <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(8)" class="hover-shadow cursor">
+                  </div>
+                 </div>
+                </div>
+                <div class="gallery-item headphone">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book10.avif" alt="headphone"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(9)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+               
+               
+               <!--5th gallery item start -->
+                <div class="gallery-item camera">
+                  <div class="gallery-item-inner">
+                    <div class="column">
+                        <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(10)" class="hover-shadow cursor">
+                      </div>
+                    <!-- <img src="./subs/book11.avif" alt="camera"> -->
+                  </div>
+                </div>
+
+                <div class="gallery-item camera">
+                    <div class="gallery-item-inner">
+                      <div class="column">
+                          <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(11)" class="hover-shadow cursor">
+                        </div>
+                      <!-- <img src="./subs/book11.avif" alt="camera"> -->
+                    </div>
+                  </div>
+               
+               
+                <!--6th gallery item end -->
+                <div class="gallery-item phone">
+                  <div class="gallery-item-inner">
+                    <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                    <div class="column">
+                        <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(12)" class="hover-shadow cursor">
+                      </div>
+                  </div>
+                </div>
+
+                <div class="gallery-item phone">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                      <div class="column">
+                          <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(13)" class="hover-shadow cursor">
+                        </div>
+                    </div>
+                  </div>
+                  <div class="gallery-item phone">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                      <div class="column">
+                          <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(14)" class="hover-shadow cursor">
+                        </div>
+                    </div>
+                  </div>
+  
+                  <div class="gallery-item phone">
+                      <div class="gallery-item-inner">
+                        <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                        <div class="column">
+                            <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(15)" class="hover-shadow cursor">
+                          </div>
+                      </div>
+                    </div>
+                    <div class="gallery-item phone">
+                        <div class="gallery-item-inner">
+                          <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                          <div class="column">
+                              <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(16)" class="hover-shadow cursor">
+                            </div>
+                        </div>
+                      </div>
+      
+                      <div class="gallery-item phone">
+                          <div class="gallery-item-inner">
+                            <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                            <div class="column">
+                                <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(17)" class="hover-shadow cursor">
+                              </div>
+                          </div>
+                        </div>
+                        <div class="gallery-item phone">
+                            <div class="gallery-item-inner">
+                              <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                              <div class="column">
+                                  <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(18)" class="hover-shadow cursor">
+                                </div>
+                            </div>
+                          </div>
+          
+                          <div class="gallery-item phone">
+                              <div class="gallery-item-inner">
+                                <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                                <div class="column">
+                                    <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(19)" class="hover-shadow cursor">
+                                  </div>
+                              </div>
+                            </div>
+               
+               
+               <!--7th gallery item end -->
+                <div class="gallery-item camera">
+                  <div class="gallery-item-inner">
+                    <!-- <img src="./subs/book13.avif" alt="camera"> -->
+                    <div class="column">
+                        <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(20)" class="hover-shadow cursor">
+                      </div>
+                  </div>
+                </div>
+               
+               
+               <!--8th gallery item end -->
+                <div class="gallery-item watch">
+                 <div class="gallery-item-inner">
+                   <!-- <img src="./subs/book15.avif" alt="watch"> -->
+                   <div class="column">
+                    <img src="./subs/book1.avif" alt="watch" style="width:100%" onclick="openModal();currentSlide(21)" class="hover-shadow cursor">
+                  </div>
+                 </div>
+                </div>
+               
+               
+                <!--9th gallery item start -->
+                <div class="gallery-item watch">
+                  <div class="gallery-item-inner">
+                    <!-- <img src="./subs/1.jpg" alt="watch"> -->
+                    <div class="column">
+                        <img src="./subs/book1.avif" alt="watch" style="width:100%" onclick="openModal();currentSlide(22)" class="hover-shadow cursor">
+                      </div>
+                  </div>
+                </div>
+                <div class="gallery-item watch">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book15.avif" alt="watch"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" alt="watch" style="width:100%" onclick="openModal();currentSlide(23)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+                  
+                  
+                   <!--9th gallery item start -->
+                   <div class="gallery-item watch">
+                     <div class="gallery-item-inner">
+                       <!-- <img src="./subs/1.jpg" alt="watch"> -->
+                       <div class="column">
+                           <img src="./subs/book1.avif" alt="watch" style="width:100%" onclick="openModal();currentSlide(24)" class="hover-shadow cursor">
+                         </div>
+                     </div>
+                   </div>
+
+                <div class="gallery-item watch">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/1.jpg" alt="watch"> -->
+                      <div class="column">
+                          <img src="./subs/book1.avif" alt="watch" style="width:100%" onclick="openModal();currentSlide(25)" class="hover-shadow cursor">
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="gallery-item watch">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/1.jpg" alt="watch"> -->
+                      <div class="column">
+                          <img src="./subs/book1.avif" alt="watch" style="width:100%" onclick="openModal();currentSlide(26)" class="hover-shadow cursor">
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="gallery-item headphone">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book7.avif" alt="headphone"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" alt="headphone" style="width:100%" onclick="openModal();currentSlide(27)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+   
+                   <div class="gallery-item headphone">
+                       <div class="gallery-item-inner">
+                         <!-- <img src="./subs/book7.avif" alt="headphone"> -->
+                         <div class="column">
+                          <img src="./subs/book1.avif" alt="headphone" style="width:100%" onclick="openModal();currentSlide(28)" class="hover-shadow cursor">
+                        </div>
+                       </div>
+                      </div>
+   
+                      <div class="gallery-item headphone">
+                       <div class="gallery-item-inner">
+                         <!-- <img src="./subs/book7.avif" alt="headphone"> -->
+                         <div class="column">
+                          <img src="./subs/book1.avif" alt="headphone" style="width:100%" onclick="openModal();currentSlide(29)" class="hover-shadow cursor">
+                        </div>
+                       </div>
+                      </div>
+      
+                      <div class="gallery-item headphone">
+                          <div class="gallery-item-inner">
+                            <!-- <img src="./subs/book7.avif" alt="headphone"> -->
+                            <div class="column">
+                             <img src="./subs/book1.avif" alt="headphone" style="width:100%" onclick="openModal();currentSlide(30)" class="hover-shadow cursor">
+                           </div>
+                          </div>
+                         </div>
+                     
+                  
+                  
+                      <div class="gallery-item camera">
+                       <div class="gallery-item-inner">
+                         <!-- <img src="./subs/book8.avif" alt="camera"> -->
+                         <div class="column">
+                          <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(31)" class="hover-shadow cursor">
+                        </div>
+                       </div>
+                      </div>
+                  <!--3rd gallery item start -->
+                   <div class="gallery-item camera">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book8.avif" alt="camera"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(32)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+                   <div class="gallery-item camera">
+                       <div class="gallery-item-inner">
+                         <!-- <img src="./subs/book8.avif" alt="camera"> -->
+                         <div class="column">
+                          <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(33)" class="hover-shadow cursor">
+                        </div>
+                       </div>
+                      </div>
+                  
+                  
+                  <!--4th gallery item start -->
+                   <div class="gallery-item headphone">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book10.avif" alt="headphone"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(34)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+                   <div class="gallery-item headphone">
+                       <div class="gallery-item-inner">
+                         <!-- <img src="./subs/book10.avif" alt="headphone"> -->
+                         <div class="column">
+                          <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(35)" class="hover-shadow cursor">
+                        </div>
+                       </div>
+                      </div>
+                  
+                  
+                  <!--5th gallery item start -->
+                   <div class="gallery-item camera">
+                     <div class="gallery-item-inner">
+                       <div class="column">
+                           <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(36)" class="hover-shadow cursor">
+                         </div>
+                       <!-- <img src="./subs/book11.avif" alt="camera"> -->
+                     </div>
+                   </div>
+   
+                   <div class="gallery-item camera">
+                       <div class="gallery-item-inner">
+                         <div class="column">
+                  <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(37)" class="hover-shadow cursor">
+                           </div>
+                         <!-- <img src="./subs/book11.avif" alt="camera"> -->
+                       </div>
+                     </div>
+                  
+                  
+                   <!--6th gallery item end -->
+                   <div class="gallery-item phone">
+                     <div class="gallery-item-inner">
+                       <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                       <div class="column">
+               <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(38)" class="hover-shadow cursor">
+                         </div>
+                     </div>
+                   </div>
+   
+                   <div class="gallery-item phone">
+                       <div class="gallery-item-inner">
+                         <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                         <div class="column">
+                             <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(39)" class="hover-shadow cursor">
+                           </div>
+                       </div>
+                     </div>
+                     <div class="gallery-item phone">
+                       <div class="gallery-item-inner">
+                         <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                         <div class="column">
+                             <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(40)" class="hover-shadow cursor">
+                           </div>
+                       </div>
+                     </div>
+     
+                     <div class="gallery-item phone">
+                         <div class="gallery-item-inner">
+                           <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                           <div class="column">
+                               <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(41)" class="hover-shadow cursor">
+                             </div>
+                         </div>
+                       </div>
+                       <div class="gallery-item phone">
+                           <div class="gallery-item-inner">
+                             <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                             <div class="column">
+                                 <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(42)" class="hover-shadow cursor">
+                               </div>
+                           </div>
+                         </div>
+         
+                         <div class="gallery-item phone">
+                             <div class="gallery-item-inner">
+                               <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                               <div class="column">
+                                   <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(43)" class="hover-shadow cursor">
+                                 </div>
+                             </div>
+                           </div>
+                           <div class="gallery-item phone">
+                               <div class="gallery-item-inner">
+                                 <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                                 <div class="column">
+                                     <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(44)" class="hover-shadow cursor">
+                                   </div>
+                               </div>
+                             </div>
+             
+                             <div class="gallery-item phone">
+                                 <div class="gallery-item-inner">
+                                   <!-- <img src="./subs/book12.avif" alt="phone"> -->
+                                   <div class="column">
+                                       <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(45)" class="hover-shadow cursor">
+                                     </div>
+                                 </div>
+                               </div>
+                  
+                  
+                  <!--7th gallery item end -->
+                   <div class="gallery-item camera">
+                     <div class="gallery-item-inner">
+                       <!-- <img src="./subs/book13.avif" alt="camera"> -->
+                       <div class="column">
+                           <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(46)" class="hover-shadow cursor">
+                         </div>
+                     </div>
+                   </div>
+                  
+                  
+                  <!--8th gallery item end -->
+                   <div class="gallery-item watch">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book15.avif" alt="watch"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" alt="watch" style="width:100%" onclick="openModal();currentSlide(47)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+                  
+                  
+                   <!--9th gallery item start -->
+                   <div class="gallery-item watch">
+                     <div class="gallery-item-inner">
+                       <!-- <img src="./subs/1.jpg" alt="watch"> -->
+                       <div class="column">
+                           <img src="./subs/book1.avif" alt="watch" style="width:100%" onclick="openModal();currentSlide(48)" class="hover-shadow cursor">
+                         </div>
+                     </div>
+                   </div>
+                   <div class="gallery-item watch">
+                       <div class="gallery-item-inner">
+                         <!-- <img src="./subs/book15.avif" alt="watch"> -->
+                         <div class="column">
+                          <img src="./subs/book1.avif" alt="watch" style="width:100%" onclick="openModal();currentSlide(49)" class="hover-shadow cursor">
+                        </div>
+                       </div>
+                      </div>
+                     
+                      <!--9th gallery item start -->
+                      <div class="gallery-item watch">
+                        <div class="gallery-item-inner">
+                          <!-- <img src="./subs/1.jpg" alt="watch"> -->
+                          <div class="column">
+              <img src="./subs/book1.avif" alt="watch" style="width:100%" onclick="openModal();currentSlide(50)" class="hover-shadow cursor">
+                            </div>
+                        </div>
+                      </div>
+   
+                   <div class="gallery-item watch">
+                       <div class="gallery-item-inner">
+                         <!-- <img src="./subs/1.jpg" alt="watch"> -->
+                         <div class="column">
+              <img src="./subs/book1.avif" alt="watch" style="width:100%" onclick="openModal();currentSlide(51)" class="hover-shadow cursor">
+                           </div>
+                       </div>
+                     </div>
+   
+                     <div class="gallery-item watch">
+                       <div class="gallery-item-inner">
+                         <!-- <img src="./subs/1.jpg" alt="watch"> -->
+                         <div class="column">
+                 <img src="./subs/book1.avif" alt="watch" style="width:100%" onclick="openModal();currentSlide(52)" class="hover-shadow cursor">
+                           </div>
+                       </div>
+                     </div>
+
+
+    <div class="gallery-item headphone">
+                 <div class="gallery-item-inner">
+                   <!-- <img src="./subs/book7.avif" alt="headphone"> -->
+                   <div class="column">
+                    <img src="./subs/book1.avif" alt="headphone" style="width:100%" onclick="openModal();currentSlide(53)" class="hover-shadow cursor">
+                  </div>
+                 </div>
+                </div>
+
+                <div class="gallery-item headphone">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book7.avif" alt="headphone"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" alt="headphone" style="width:100%" onclick="openModal();currentSlide(54)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+
+                   <div class="gallery-item headphone">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book7.avif" alt="headphone"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" alt="headphone" style="width:100%" onclick="openModal();currentSlide(55)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+   
+                   <div class="gallery-item headphone">
+                       <div class="gallery-item-inner">
+                         <!-- <img src="./subs/book7.avif" alt="headphone"> -->
+                         <div class="column">
+                          <img src="./subs/book1.avif" alt="headphone" style="width:100%" onclick="openModal();currentSlide(56)" class="hover-shadow cursor">
+                        </div>
+                       </div>
+                      </div>
+                  
+               
+               
+                   <div class="gallery-item camera">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book8.avif" alt="camera"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(57)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+               <!--3rd gallery item start -->
+                <div class="gallery-item camera">
+                 <div class="gallery-item-inner">
+                   <!-- <img src="./subs/book8.avif" alt="camera"> -->
+                   <div class="column">
+                    <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(58)" class="hover-shadow cursor">
+                  </div>
+                 </div>
+                </div>
+                <div class="gallery-item camera">
+                    <div class="gallery-item-inner">
+                      <!-- <img src="./subs/book8.avif" alt="camera"> -->
+                      <div class="column">
+                       <img src="./subs/book1.avif" alt="camera" style="width:100%" onclick="openModal();currentSlide(59)" class="hover-shadow cursor">
+                     </div>
+                    </div>
+                   </div>
+               
+               
+               <!--4th gallery item start -->
+                <div class="gallery-item headphone">
+                 <div class="gallery-item-inner">
+                   <!-- <img src="./subs/book10.avif" alt="headphone"> -->
+                   <div class="column">
+                    <img src="./subs/book1.avif" style="width:100%" onclick="openModal();currentSlide(60)" class="hover-shadow cursor">
+                  </div>
+                 </div>
+                </div>
+              
+      
+                  
+               
+               </div>
+</section>
+
+
+
+<div id="myModal" class="modal">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+
+      <div class="mySlides">
+        <div class="numbertext">1 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">2 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">3 / 60</div>
+        <img src="./subs/book1.avif  " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">4 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">5 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">6 / 60</div>
+        <img src="./subs/book1.avif  " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">7 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">8 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">9 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">10 / 60</div>
+        <img src="./subs/book1.avif  " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">11 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">12 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">13 / 30</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">14 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">15 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">16 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">17 / 60</div>
+        <img src="./subs/book1.avif  " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">18 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">19 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">20 / 60</div>
+        <img src="./subs/book1.avif  " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">21 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">22 / 60</div>
+        <img src="./subs/book1.avif  " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">23 / 30</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">24 / 60</div>
+        <img src="./subs/book1.avif  " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">25 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">26 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">27 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">28 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">29 / 60</div>
+        <img src="./subs/book1.avif  " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">30 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">31 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">32 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">33 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">34 / 60</div>
+        <img src="./subs/book1.avif  " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">35 / 60</div>
+        <img src="./subs/book1.avif  " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">36 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">37 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">38 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">39 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">40 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">41 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">42 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">43 / 30</div>
+        <img src="./subs/book1.avif  " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">44 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">45 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">46 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">47 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">48 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">49 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">50 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">51 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">52 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">53 / 30</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">54 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">55 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">56 / 60</div>
+        <img src="./subs/book1.avif  " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">57 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">58 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">59 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">60 / 60</div>
+        <img src="./subs/book1.avif " style="width:100%">
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+      <div class="caption-container">
+        <p id="caption"></p>
+      </div>
+
+
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(1)" alt="1">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(2)" alt="2">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(3)" alt="3">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(4)" alt="4">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(5)" alt="5">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(6)" alt="6">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(7)" alt="7">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(8)" alt="8">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(9)" alt="9">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(10)" alt="10">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(11)" alt="11">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(12)" alt="12">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(13)" alt="13">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(14)" alt="14">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(15)" alt="15">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(16)" alt="16">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(17)" alt="17">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(18)" alt="18">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(19)" alt="19">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(20)" alt="20">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(21)" alt="21">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(22)" alt="22">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(23)" alt="23">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(24)" alt="24">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(25)" alt="25">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(26)" alt="26">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(27)" alt="27">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(28)" alt="28">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(29)" alt="29">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(30)" alt="30">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(31)" alt="1">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(32)" alt="2">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(33)" alt="3">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(34)" alt="4">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(35)" alt="5">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(36)" alt="6">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(37)" alt="7">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(38)" alt="8">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(39)" alt="9">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(40)" alt="10">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(41)" alt="11">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(42)" alt="12">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(43)" alt="13">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(44)" alt="14">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(45)" alt="15">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(46)" alt="16">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(47)" alt="17">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(48)" alt="18">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(49)" alt="19">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(50)" alt="20">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(51)" alt="21">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(52)" alt="22">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(53)" alt="23">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(54)" alt="24">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(55)" alt="25">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(56)" alt="26">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(57)" alt="27">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(58)" alt="28">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(59)" alt="29">
+      </div>
+      <div class="column">
+        <img class="image cursor" src="https://placehold.it/180x180.jpg " style="width:100%" onclick="currentSlide(60)" alt="30">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+        <!-- </div>
+
+    </section> -->
+
+
+    <script src="jquery-3.2.1.js"></script>
+    <script src="main.js"></script>
+
+    <script>
+        
+$(document).ready(function() {
+$('.mobile_nav').on("click", function(){
+  
+   $('ul#primary-navigation').toggleClass('open');
+   
+});
+});
+
+function openModal() {
+document.getElementById('myModal').style.display = "block";
+}
+
+function closeModal() {
+document.getElementById('myModal').style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+var i;
+var slides = document.getElementsByClassName("mySlides");
+var dots = document.getElementsByClassName("image");
+var captionText = document.getElementById("caption");
+if (n > slides.length) {
+  slideIndex = 1;
+}
+
+if (n < 1) {
+  slideIndex = slides.length
+}
+
+for (i = 0; i < slides.length; i++) {
+  slides[i].style.display = "none";
+}
+
+for (i = 0; i < dots.length; i++) {
+  dots[i].className = dots[i].className.replace(" active", "");
+}
+slides[slideIndex-1].style.display = "block";
+dots[slideIndex-1].className += " active";
+captionText.innerHTML = dots[slideIndex-1].alt;
+}
+    </script>
+
+    <script>
+
+const filterContainer = document.querySelector(".gallery-filter");
+ const galleryItems = document.querySelectorAll(".gallery-item");
+ filterContainer.addEventListener("click", (event) =>{
+   if(event.target.classList.contains("filter-item")){
+
+     // deactivate existing active 'filter-item'
+    filterContainer.querySelector(".active").classList.remove("active");
+
+     // activate new 'filter-item'
+    event.target.classList.add("active");
+
+    const filterValue = event.target.getAttribute("data-filter");
+
+    galleryItems.forEach((item) =>{
+
+       if(item.classList.contains(filterValue) || filterValue === 'all'){
+        item.classList.remove("hide");
+         item.classList.add("show");
+       }
+
+       else{
+        item.classList.remove("show");
+        item.classList.add("hide");
+       }
+
+     });
+   }
+ });
+
+    </script>
+
+</body>
+</html>

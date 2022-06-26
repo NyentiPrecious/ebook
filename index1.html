@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Preciousweb</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+  body {
+    position: relative; 
+  }
+  .affix {
+    top:0;
+    width: 100%;
+    z-index: 9999 !important;
+  }
+  .navbar {
+    margin-bottom: 0px;
+  }
+
+  .affix ~ .container-fluid {
+   position: relative;
+   top: 50px;
+  }
+   /* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: dodgerblue;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 500px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 30px;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+#regForm {
+  background-color: #fff;
+  /* color: whitesmoke; */
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 50%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;  
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #b11212;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #04AA6D;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #04AA6D;
+}
+
+/* modal for login */
+.modal-header, h4, .close {
+    background-color: #5cb85c;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+  }
+  .modal-footer {
+    background-color: #f9f9f9;
+  }
+
+  .input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  padding: 10px;
+  background: dodgerblue;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: dodgerblue;
+  color: white;
+  padding: 8.4px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+
+  /* .jumbotron {
+    background-color: #f4511e;
+    color: #fff;
+    padding: 100px 25px;
+  } */
+  /* .container-fluid {
+    padding: 60px 50px;
+  } */
+  .bg-grey {
+    background-color: #f6f6f6;
+  }
+  .logo-small {
+    color: dodgerblue;
+    font-size: 50px;
+  }
+  .logo {
+    color: dodgerblue;
+    font-size: 200px;
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+  
+  #section1 {padding-top:50px;height:500px;color: #fff; background-color: #fff;}
+  #section2 {padding-top:50px;height:500px;color: rgb(27, 26, 26); background-color: #434346;}
+  #section3 {padding-top:50px;height:500px;color: #fff; background-color: rgb(20, 20, 20);}
+  #section4 {padding-top:50px;height:500px;color: #fff; background-color: #434346;}
+  #section5 {padding-top:50px;height:500px;color: #fff; background-color: #050505;}
+  #section6 {padding-top:50px;height:500px;color: #fff; background-color: #fff6;}
+  #section7 {padding-top:50px;height:500px;color: #fff; background-color: #434346;}
+  #section8 {padding-top:50px;height:500px;color: #fff; background-color: #434346;}
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">PG ebook</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <h5 style="color: white;" >Already have an account?</h5>
+            <li> <a type="button" class="btn btn-default btn-lg" id="myBtn1" href="#"
+                 data-toggle="tooltip" title="Already have an account? Login here!">
+                <span class="glyphicon glyphicon-log-in"></span> Login </a>
+
+                 <!-- Trigger the modal with a button -->
+ 
+                 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="" checked>Remember me</label>
+            </div>
+              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off">
+
+              </span> Login</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <p>Not a member? <a href="#Sign Up">Sign Up</a></p>
+          <p>Forgot <a href="#">Password?</a></p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+<div class="container-fluid" style="background-color:#1a1818;color:#fff;height:200px; display: flex;
+ justify-content: space-between;">
+    <div>
+  <h1>Learning is fun</h1>
+  <h3>Want to get daily feeds on our latest books?</h3>
+ 
+  
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Subscribe</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 >SUBSCRIBE</h2>
+        </div>
+        <div class="modal-body">
+          <p>Join my mailing list to receive updates on the latest blog posts and other things.</p>
+          <p><input type="text" placeholder="Enter e-mail"></p>
+          <button type="button" 
+          onclick="document.getElementById('subscribe').style.display='none'">Subscribe</button>
+        </div>
+
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+    
+
+  <div style="display: flex; flex-direction: column; margin-top: 5rem; " >
+    <ul class="nav navbar-nav navbar-right">
+     <p>
+        Want to upload your book? <br> SignUp!
+     </p>
+     <li><a type="button" class="btn btn-default btn-lg" id="myBtn3" style="text-decoration: none;" href="#Sign Up">
+        <span class="glyphicon glyphicon-user"></span> Sign Up</a></li></ul>
+   
+
+      <!-- Modal -->
+  <div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 ><span class="glyphicon glyphicon-lock"></span> SignUp</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form action="/action_page.php" style="max-width:500px;margin:auto">
+           
+            <div class="input-container">
+              <i class="fa fa-user icon"></i>
+              <input class="input-field" type="text" placeholder="Username" name="usrnm">
+            </div>
+          
+            <div class="input-container">
+              <i class="fa fa-envelope icon"></i>
+              <input class="input-field" type="text" placeholder="Email" name="email">
+            </div>
+            
+            <div class="input-container">
+              <i class="fa fa-key icon"></i>
+              <input class="input-field" type="password" placeholder="Password" name="psw">
+            </div>
+          
+            <button type="submit" class="btn">SignUp</button>
+          </form>
+          
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          
+          <p>Forgot <a href="#"> forgotten Password?</a></p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+</div>
+
+
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">PG ebook</a>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#section1">Section 1</a></li>
+          <li><a href="#section2">Section 2</a></li>
+          <li><a href="#section3">Section 3</a></li>
+          <li ><a  href="#section4">Section 4</a></li>
+            <!-- <ul class="dropdown-menu"> -->
+              <li><a href="#section5">Section 5</a></li>
+              <li><a href="#section6">Section 6</a></li>
+              <li><a href="#section7">Section 7</a></li>
+              <li><a href="#section8">Section 8</a></li>
+            <!-- </ul> -->
+          
+        </ul>
+        <form style="margin-left: 40rem;" class="navbar-form navbar-left" action="/action_page.php">
+            <div class="input-group">
+              <input  class="form-control" id="myInput" type="text" placeholder="Search..">
+              <div class="input-group-btn">
+                <button  type="submit" class="btn btn-default">
+                    <i class="glyphicon glyphicon-search"></i>
+                  </button>
+              </div>
+      </div>
+    </form>
+    </div>
+  </div>
+</nav>    
+
+<div id="myDIV">
+
+<div id="section1" class="container-fluid">
+  
+  <div id="myCarousel" class="carousel slide">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li class="item1 active"></li>
+      <li class="item2"></li>
+      <li class="item3"></li>
+      <li class="item4"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+      <div class="item active">
+        <img src="./subs/e1.webp" alt="Romance" style=" width:100%; height:420px;">
+        <div class="carousel-caption">
+          <h3>Romance</h3>
+          <p>Romantic and heart breaking.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="./subs/e3.jpg" alt="Fantasy" style=" width:100%; height:420px;">
+        <div class="carousel-caption">
+          <h3>Fantasy</h3>
+          <p>This book is full of Fantasy.</p>
+        </div>
+      </div>
+    
+      <div class="item">
+        <img src="./subs/e4.jpg" alt="Misery" style=" width:100%; height:420px;" >
+        <div class="carousel-caption">
+          <h3>Misery</h3>
+          <p>Misery, sorrow-filled book.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="./subs/e2.jpg" alt="Adventure" style=" width:100%; height:420px;">
+        <div class="carousel-caption">
+          <h3>Adventure</h3>
+          <p>Trilling, daring.</p>
+        </div>
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+<div id="section2" class="container-fluid">      
+  <div  class="w3-col m6">
+    <form id="regForm" action="/action_page.php">
+        <h1>Create Here:</h1>
+        <!-- One "tab" for each step in the form: -->
+        <div class="tab">Name:
+          <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
+          <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
+        </div>
+        <div class="tab">Contact Info:
+          <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
+          <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+        </div>
+        <div class="tab">Birthday:
+          <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+          <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
+          <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+        </div>
+        <div class="tab">Education:
+          <p><input placeholder="Previous..." oninput="this.className = ''" name="uname"></p>
+          <p><input placeholder="Present..." oninput="this.className = ''" name="pword" type="password"></p>
+        </div>
+        <div style="overflow:auto;">
+          <div style="float:right;">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+          </div>
+        </div>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+        </div>
+      </form>
+  
+    </div>
+<button class="open-button" onclick="openForm()"><h2 style="color: white;" >Upload Your books</h2></button>
+
+<div class="form-popup" id="myForm">
+<form action="/action_page.php" class="form-container">
+  <h1>Upload Your books</h1>
+
+  <label for="email"><b>Email</b></label>
+  <input type="text" placeholder="Enter Email" name="email" required>
+
+  <label for="psw"><b>Name</b></label>
+  <input type="password" placeholder="Name" name="psw" required>
+
+  <input type="file" id="myFile" name="filename">
+  <input type="submit">
+
+  <button type="submit" class="btn">Upload</button>
+  <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form>
+ 
+        <!-- </div>
+      </div> -->
+  
+
+</div>
+</div>
+<div id="section3" class="container-fluid">
+  
+      
+<div class="container text-center">    
+    <h3>What We Do</h3><br>
+    <div class="row">
+      <div class="col-sm-4">
+        <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+        <p>Current Project</p>
+      </div>
+      <div class="col-sm-4"> 
+        <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+        <p>Project 2</p>    
+      </div>
+      <div class="col-sm-4">
+        <div class="well">
+         <p>Some text..</p>
+        </div>
+        <div class="well">
+         <p>Some text..</p>
+        </div>
+      </div>
+    </div>
+  </div><br>
+  
+
+</div>
+<div id="section4" class="container-fluid">
+<!-- Container (Services Section) -->
+<div class="container-fluid text-center">
+    <h2>SERVICES</h2>
+    <h5>What we offer</h5>
+    <br>
+    <div class="row">
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-off logo-small"></span>
+        <h5>POWER</h5>
+        <p>Lorem ipsum dolor sit amet..</p>
+      </div>
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-heart logo-small"></span>
+        <h5>LOVE</h5>
+        <p>Lorem ipsum dolor sit amet..</p>
+      </div>
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-lock logo-small"></span>
+        <h5>JOB DONE</h5>
+        <p>Lorem ipsum dolor sit amet..</p>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-leaf logo-small"></span>
+        <h5>GREEN</h5>
+        <p>Lorem ipsum dolor sit amet..</p>
+      </div>
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-certificate logo-small"></span>
+        <h5>CERTIFIED</h5>
+        <p>Lorem ipsum dolor sit amet..</p>
+      </div>
+      <div class="col-sm-4">
+        <span class="glyphicon glyphicon-wrench logo-small"></span>
+        <h5>HARD WORK</h5>
+        <p>Lorem ipsum dolor sit amet..</p>
+      </div>
+    </div>
+</div>
+</div>
+
+
+<div id="section5" class="container-fluid">
+  
+    <!-- Container (Contact Section) -->
+<!-- <div id="contact" class="container-fluid bg-grey"> -->
+    <h2 class="text-center">CONTACT US </h2>
+    <div class="row">
+      <div class="col-sm-5">
+        <p>Contact us and we'll get back to you as soon as we can.</p>
+        <p><span class="glyphicon glyphicon-map-marker"></span> Cameroon, Africa</p>
+        <p><span class="glyphicon glyphicon-phone"></span> +237 ... </p>
+        <p><span class="glyphicon glyphicon-envelope"></span> name@gmail.com</p>
+      </div>
+      <div class="col-sm-7 slideanim">
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+          </div>
+        </div>
+        <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <button class="btn btn-default pull-right" type="submit">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<!-- </div> -->
+
+
+<div style="color: black;" id="section6" class="container-fluid">
+ 
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+        </ol>
+    
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="https://placehold.it/1200x400?text=IMAGE" alt="Image">
+            <div class="carousel-caption">
+              <h3>Sell $</h3>
+              <p>Money Money.</p>
+            </div>      
+          </div>
+    
+          <div class="item">
+            <img src="https://placehold.it/1200x400?text=Another Image Maybe" alt="Image">
+            <div class="carousel-caption">
+              <h3>More Sell $</h3>
+              <p>Lorem ipsum...</p>
+            </div>      
+          </div>
+        </div>
+    
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+  </div>
+  <div id="section7" >
+    <footer class="container-fluid text-center">
+
+        <div class="row">
+            <div class="col-sm-4">
+<p>Work</p>
+<p>peace</p>
+<p>fatherland</p>
+<p>community</p>
+<p>welfare</p>
+<p>culture</p>
+            </div>
+            <div class="col-sm-4">
+                <p>Work</p>
+<p>peace</p>
+<p>fatherland</p>
+<p>community</p>
+<p>welfare</p>
+<p>culture</p>
+<p>Work</p>
+<p>peace</p>
+<p>fatherland</p>
+<p>community</p>
+<p>welfare</p>
+<p>culture</p>
+            </div>
+            <p>Work</p>
+<p>peace</p>
+<p>fatherland</p>
+<p>community</p>
+<p>welfare</p>
+<p>culture</p>
+<p>Work</p>
+<p>peace</p>
+<p>fatherland</p>
+<p>community</p>
+
+          </div>
+
+          <a href="#" title="To Top">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+
+          <div style="display: flex; justify-content: space-evenly; size: 200px; " >
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+        </div>
+
+      
+        
+      </footer>
+  </div>
+
+
+      <!-- <p>I am a paragraph.</p>
+      <div>I am a div element inside div.</div>
+      <button class="btn">I am a button</button>
+      <button class="btn btn-info">Another button</button>
+      <p>Another paragraph.</p> -->
+    </div>
+ 
+
+<script>
+     function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+    
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+    function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+
+$(document).ready(function(){
+  // Activate Carousel
+  $("#myCarousel").carousel();
+    
+  // Enable Carousel Indicators
+  $(".item1").click(function(){
+    $("#myCarousel").carousel(0);
+  });
+  $(".item2").click(function(){
+    $("#myCarousel").carousel(1);
+  });
+  $(".item3").click(function(){
+    $("#myCarousel").carousel(2);
+  });
+  $(".item4").click(function(){
+    $("#myCarousel").carousel(3);
+  });
+    
+  // Enable Carousel Controls
+  $(".left").click(function(){
+    $("#myCarousel").carousel("prev");
+  });
+  $(".right").click(function(){
+    $("#myCarousel").carousel("next");
+  });
+});
+
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myDIV *").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+
+    $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+   });
+// modal for login
+   $(document).ready(function(){
+  $("#myBtn1").click(function(){
+    $("#myModal1").modal();
+  });
+});
+
+// modal for signin
+$(document).ready(function(){
+  $("#myBtn3").click(function(){
+    $("#myModal3").modal();
+  });
+});
+
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+
+    </script>
+
+</body>
+</html>

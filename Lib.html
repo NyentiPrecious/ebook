@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Gallery</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 620px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+
+    div.gfg {
+                margin:5px;
+                padding:5px;
+                background-color: #666;
+                /* width: 740px; */
+                height: 620px;
+                overflow: auto;
+                text-align:justify;
+            }
+
+.well{
+
+    height: 100px;
+
+    }
+
+    /* Container holding the image and the text */
+/* .container1 {
+  position: relative;
+  text-align: center;
+  color: white;
+} */
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.checked {
+  color: orange;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+.modal {
+z-index:1;
+display:none;
+padding-top:10px;
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+overflow:auto;
+background-color:rgb(0,0,0);
+background-color:rgba(0,0,0,0.8)
+}
+
+.modal-content{
+margin: auto;
+display: block;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.modal-hover-opacity {
+  opacity:1;
+  filter:alpha(opacity=100);
+  -webkit-backface-visibility:hidden;
+}
+
+.modal-hover-opacity:hover {
+
+   opacity:0.60;
+   filter:alpha(opacity=60);
+   -webkit-backface-visibility: hidden;
+}
+
+
+.close {
+text-decoration:none;
+float:right;
+font-size:34px;
+font-weight:bold;
+color:white;
+}
+.container1 {
+  width: 100px;
+  display:inline-block;
+  /* position: relative;
+  text-align: center;
+  color: white; */
+}
+.modal-content, #caption {   
+  
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+button{
+  width:100px;
+  height:50px;
+}
+
+button .msg-follow,
+button .msg-following,
+button .msg-unfollow{
+  display: none;
+}
+
+button .msg-follow{
+  display: inline;
+}
+
+button.following .msg-follow{
+  display: none;
+}
+
+button.following .msg-following{
+  display: inline;
+}
+
+button.following:not(.wait):hover .msg-following{
+  display: none;
+}
+
+button.following:not(.wait):hover .msg-unfollow{
+  display: inline;
+}
+
+  </style>
+</head>
+<body style="width: 100%; background-image: url(./subs/7.jpg); background-repeat: no-repeat; background-size: cover;   " >
+
+    <div style="margin-top: 5rem; width: 80% " class="container">
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" placeholder="Search..">
+          <span class="input-group-btn">
+            <button style="height: 35px;" class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>        
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div>
+
+ 
+    <div class="col-sm-8 text-left">
+        <div class="gfg"> 
+
+            <div class="row">
+                             
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SY1000_CR0,0,674,1000_AL_.jpg" 
+    style="max-width:100%;cursor:pointer"
+	onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+        <!-- <p>30%</p>  -->
+        
+<!-- Use an element to toggle between a like/dislike icon -->
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+
+
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyNzk3MjA1OF5BMl5BanBnXkFtZTcwMTE1Njg2MQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+       
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+
+
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_.jpg" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+    
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+
+
+  <div class="container1">
+    <img src="./subs/book15.avif" style="max-width:100%;cursor:pointer" onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+        
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SY1000_CR0,0,674,1000_AL_.jpg" style="max-width:100%;cursor:pointer"
+	onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+        
+        <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyNzk3MjA1OF5BMl5BanBnXkFtZTcwMTE1Njg2MQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+        
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i> 
+      </div>
+  </div>
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_.jpg" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+        
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_.jpg" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+       
+        <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SY1000_CR0,0,674,1000_AL_.jpg" style="max-width:100%;cursor:pointer"
+	onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+        
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i> 
+      </div>
+  </div>
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyNzk3MjA1OF5BMl5BanBnXkFtZTcwMTE1Njg2MQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+        
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_.jpg" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+    
+        <i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+  <div class="container1">
+    <img src="./subs/book1.avif" style="max-width:100%;cursor:pointer" onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+      
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SY1000_CR0,0,674,1000_AL_.jpg" style="max-width:100%;cursor:pointer"
+	onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+       
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyNzk3MjA1OF5BMl5BanBnXkFtZTcwMTE1Njg2MQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+        
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_.jpg" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+       
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i> 
+      </div>
+  </div>
+  <div class="container1">
+    <img src="./subs/book13.avif" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+        
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i> 
+      </div>
+  </div>
+  <div class="container1">
+    <img src="./subs/book10.avif" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+        
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SY1000_CR0,0,674,1000_AL_.jpg" style="max-width:100%;cursor:pointer"
+	onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+       
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyNzk3MjA1OF5BMl5BanBnXkFtZTcwMTE1Njg2MQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+        
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+  <div class="container1">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_.jpg" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+       
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i> 
+      </div>
+  </div>
+  <div class="container1">
+    <img src="./subs/book13.avif" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+        
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i> 
+      </div>
+  </div>
+  <div class="container1">
+    <img src="./subs/book10.avif" style="max-width:100%;cursor:pointer" 
+    onclick="onClick(this)" class="modal-hover-opacity">
+    <div class="well">
+        <h4>Bounce</h4>
+        
+<i onclick="myFunction(this)" class="fa fa-thumbs-up"></i>
+      </div>
+  </div>
+
+
+<div id="modal01" class="modal" onclick="this.style.display='none'">
+  <span class="close">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+  <div class="modal-content">
+   
+    <div style="display: flex; align-items: center; " >
+
+<div class="card">
+    <img src="./subs/p1.jpg" alt="John" style="width:40%; border-radius: 550px; ">
+    <h1>John Doe</h1>
+    <p class="title">CEO & Founder, Entrepreneur</p>
+    <p>Harvard University</p>
+
+    <!-- <button class="follow">
+        <span class="msg-follow">Follow</span>
+        <span class="msg-following">Following</span>
+        <span class="msg-unfollow">Unfollow</span>
+      </button> -->
+
+    <a href="#"><i class="fa fa-dribbble"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-linkedin"></i></a>
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <p><button style="border-radius: 30px; width: 100px; " >Contact</button></p>
+    </div>
+
+    <img id="img01" style="max-width:100%; height: 500px; ">
+
+    <p><button style="border-radius: 30px; width: 100px; ">Purchase</button></p>
+    <p><button style="border-radius: 30px; width: 100px; ">Read</button></p>
+  
+</div>
+    
+    <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+
+    <div>
+        <h2>March</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt repellendus, rem labore vero nisi fuga explicabo. Vero architecto doloremque saepe dolorem beatae quas rem ab, ipsam, ullam quaerat veniam delectus!</p>
+    </div>
+
+  </div>
+
+</div>
+     
+
+
+    </div>
+    </div>
+</div>
+
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<script>
+
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+}
+
+$('button').click(function(){
+  var $this = $(this);
+  $this.toggleClass('following')
+  if($this.is('.following')){
+    $this.addClass('wait');
+  }
+}).on('mouseleave',function(){
+  $(this).removeClass('wait');
+})
+
+function myFunction(x) {
+  x.classList.toggle("fa-thumbs-down");
+}
+
+</script>
+
+</body>
+</html>

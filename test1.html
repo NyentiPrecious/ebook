@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.imgStyle {
+  width: 300px;
+  height: 100px;
+  border: 3px solid grey;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+.book {
+  max-width: 100%;
+}
+.cell img {
+  display: block;
+}
+
+@media screen and (min-width: 600px) {
+  .container{
+    overflow: auto;
+    height: (70vh);
+  }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .cell {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .container{
+    overflow: auto;
+    max-height: 80vh;
+  }
+  .cell {
+    width: calc(33.3333% - 2rem);
+  }
+}
+
+.cell {
+  margin: 1rem;
+}
+
+button {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .cell {
+    display: none;
+  }
+  
+  .cell:first-child {
+    display: block;
+  }
+  
+  button {
+    display: inline-block;
+    background-color: yellow;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #444;
+}
+
+main {
+  padding: 0 0.5rem;
+  height: 100vh;
+}
+.image--gallery {
+  width: 100%;
+  height: 32rem;
+  display: block;
+  margin: auto;
+  border: 5px solid #222;
+  object-fit: cover;
+}
+
+.image--selection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  justify-content: center;
+  align-items: center;
+}
+.image__item {
+  width: 100%;
+  height: 8rem;
+  display: block;
+  margin: auto;
+  margin-bottom: 0.5rem;
+  border: 5px solid #222;
+  object-fit: cover;
+  cursor: pointer;
+}
+.loader {
+  text-align: center;
+  margin-top: 20%;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+}
+
+.animate-entrance {
+  animation: BounceIn 0.8s;
+}
+
+@keyframes BounceIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+*
+{
+	margin:0;
+	padding:0;
+}
+
+/* Styling upper Menu */
+.menu
+{
+	margin:10px auto;
+	width:640px;
+	text-align:center;
+}
+
+.menu ul
+{
+	padding:3px;
+	list-style:none;
+	display:inline-block;
+	border:1px solid #aaa;
+	background: radial-gradient(rgba(255, 255, 255, 0.8) 50%, rgba(180,180,180,0.8));
+}
+
+.menu ul li
+{
+	padding:0px;
+	cursor:pointer;
+	float:left;	
+	margin:0 2px 0 2px;
+	font-family:cursive;
+	color:#723A3A;
+	border:1px solid #aaa;	
+	padding:2px;
+}
+
+.menu ul li:hover
+{
+	background: radial-gradient(rgba(199, 224, 205, 0.8) 50%, rgba(103, 140, 196, 0.8));
+}
+
+.menuSelected
+{
+	background: radial-gradient(rgba(199, 224, 205, 0.8) 50%, rgba(103, 140, 196, 0.8));
+}
+
+
+/* ============================== This is for Overall Styling of the Image Gallery. */
+.gallery-container
+{
+	width:640px;
+	border:2px solid rgb(10, 108, 175);
+	/*border-radius*/
+	-webkit-border-radius:5px 5px 10px 10px;
+	-moz-border-radius:5px 5px 10px 10px;
+	border-radius:5px 5px 10px 10px;
+	margin:10px auto;
+	padding:0px;
+	display:table;
+	position:relative;
+	text-align:center; 
+	box-shadow: 0 0 20px #119;	
+}
+
+.gallery-container h2
+{
+	font-family: arial;
+	color: #fff;
+	background: rgb(8, 9, 55);
+	text-shadow: 0 0 15px #12C024;
+}
+
+/* Styling the Pagination Thumbnail Images. */
+.pagi-container
+{
+	width:640px;
+	text-align:center; 
+	border: 2px solid rgb(75, 41, 160);
+	/*border-radius*/
+	-webkit-border-radius:0px 0px 8px 8px;
+	-moz-border-radius:0px 0px 8px 8px;
+	border-radius:0px 0px 8px 8px;
+	padding-top:350px; /* This creates the space for viewing the Slider Images. */
+	position:relative;
+	overflow:hidden;
+}
+
+.pagi-container input[name='input_thumb'] 
+{
+	display: none;	
+}
+
+.pagi-container >label
+{
+	border:1px solid #aaa;
+	padding:5px; /* This is important to Increase the Click-able Region of the anchor Elements */
+	background: radial-gradient(rgba(255, 255, 255, 0.8) 50%, rgba(180,180,180,0.8));
+	display:inline-flex;	
+	transition: all 0.5s;
+	margin-bottom: 5px;
+	box-shadow: 0 0 30px #404741;
+}
+
+.pagi-container >label:hover
+{
+	background: radial-gradient(rgba(220, 220, 220, 0.3), rgba(180,180,180,0.8) 95%);
+}
+
+.pagi-container label img
+{
+	opacity:0.7;	
+}
+
+.pagi-container label img:hover
+{
+	opacity:1.0;
+}
+
+/* This will add the Click Effect */
+.pagi-container input[name='input_thumb']:checked+label {
+	border:1px solid #111;
+	opacity: 1;
+}
+
+.pagi-container input[name='input_thumb']:checked+label>img
+{
+	opacity:1;
+}
+
+.pagi-container input[name='input_thumb']:checked+label+img {
+	opacity: 1;
+	width:640px;
+	height:345px;
+	position:absolute;
+	left:0px;
+	top:0px;
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	transition: all 1s ease;	
+	transform: scale(1);	
+}
+
+/* Adding #background region to hide the images coming from bottom direction, as it'll overlap with the Pagination Thumbnail images, while transitioning from Down direction. */
+#background
+{
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 26%;
+	background-color: white;
+	z-index: -1;
+}
+
+/* Different Styling for each Patterns. */
+.DefaultBigStyle1
+{
+	position:absolute;
+	opacity:0;
+	width:640px;
+	height:345px;
+	left:0px;
+	top:0px;	
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	transition: all 1s ease;
+	transform:scale(1.05);
+}
+
+.DefaultBigStyle2
+{
+	position:absolute;
+	width:640px;
+	height:345px;
+	left:-650px;
+	top:0px;
+	opacity:0;
+}
+
+.DefaultBigStyle3
+{
+	position:absolute;
+	width:640px;
+	height:345px;
+	left:650px;
+	top:0px;
+	opacity:0;	
+}
+
+.DefaultBigStyle4
+{
+	position:absolute;
+	width:640px;
+	height:345px;
+	left:0px;	
+	top:-350px;
+	opacity:0;	
+}
+
+.DefaultBigStyle5
+{
+	position:absolute;
+	width:640px;
+	height:345px;
+	left:0px;	
+	top:350px;
+	opacity:0;	
+	z-index:-2; /* IMPORTANT: To give the images coming from down direction a depth, so that it'll not overlap with the Pagination Thumbnail images. */
+}
+
+.DefaultBigStyle6
+{
+	position:absolute;
+	width:640px;
+	height:345px;
+	left:650px;
+	top:-350px;
+	opacity:0;	
+}
+
+.DefaultBigStyle7
+{
+	position:absolute;
+	width:640px;
+	height:345px;
+	left:0px;
+	top:0px;
+	opacity:0;
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	transition: all 1s ease;	
+	transform: scale(0.5);	
+}
+
+
+</style>
+
+
+</head>
+<body>
+
+    <div class="menu">		
+		<ul>
+			<li data-pattern="1">Default</li>
+			<li data-pattern="2">From Left</li>
+			<li data-pattern="3">From Right</li>
+			<li data-pattern="4">From Top</li>
+			<li data-pattern="5">From Bottom</li>
+			<li data-pattern="6">From Top-Right</li>
+			<li data-pattern="7">Zoom In</li>
+		</ul>
+		</div>	
+		
+		<!-- Container for Photo Gallery -->
+		<div class="gallery-container">						
+			<h2>Photo Gallery</h2>								
+			<div class="pagi-container">
+				<!-- Following DIV plays an Important Role for Hiding the Bottom Transition of Images overlapping the Pagination Thumbnail images. -->
+				<div id="background"></div>
+				
+				<input type="radio" name="input_thumb" id="id1"/>
+				<label for="id1">
+					<img src="images/thumbimg/thumbimg1.jpg" alt="Image1"/>					
+				</label>
+				<img src="images/bigimg/bigimg1.jpg" alt="Image2">
+			
+				<input type="radio" name="input_thumb" id="id2" />
+				<label for="id2">
+					<img src="images/thumbimg/thumbimg2.jpg" alt="Image2"/>
+				</label>
+				<img src="images/bigimg/bigimg2.jpg" alt="Image2">
+				
+				<input type="radio" name="input_thumb" id="id3" />
+				<label for="id3">
+					<img src="images/thumbimg/thumbimg3.jpg" alt="Image3"/>
+				</label>
+				<img src="images/bigimg/bigimg3.jpg" alt="Image3">
+			
+				<input type="radio" name="input_thumb" id="id4" />
+				<label for="id4">
+					<img src="images/thumbimg/thumbimg4.jpg" alt="Image4"/>
+				</label>
+				<img src="images/bigimg/bigimg4.jpg" alt="Image4">
+				
+				<input type="radio" name="input_thumb" id="id5" />
+				<label for="id5">
+					<img src="images/thumbimg/thumbimg5.jpg" alt="Image5"/>
+				</label>
+				<img src="images/bigimg/bigimg5.jpg" alt="Image5">
+			
+				<input type="radio" name="input_thumb" id="id6" />
+				<label for="id6">
+					<img src="images/thumbimg/thumbimg6.jpg" alt="Image6"/>
+				</label>
+				<img src="images/bigimg/bigimg6.jpg" alt="Image6">
+				
+				<input type="radio" name="input_thumb" id="id7" />
+				<label for="id7">
+					<img src="images/thumbimg/thumbimg7.jpg" alt="Image7"/>
+				</label>
+				<img src="images/bigimg/bigimg7.jpg" alt="Image7">
+			
+				<input type="radio" name="input_thumb" id="id8" />
+				<label for="id8">
+					<img src="images/thumbimg/thumbimg8.jpg" alt="Image8"/>
+				</label>
+				<img src="images/bigimg/bigimg8.jpg" alt="Image8">
+				
+				<input type="radio" name="input_thumb" id="id9" />
+				<label for="id9">
+					<img src="images/thumbimg/thumbimg9.jpg" alt="Image9"/>
+				</label>
+				<img src="images/bigimg/bigimg9.jpg" alt="Image9">
+			
+				<input type="radio" name="input_thumb" id="id10"/>
+				<label for="id10">
+					<img src="images/thumbimg/thumbimg10.jpg" alt="Image10"/>
+				</label>
+				<img src="images/bigimg/bigimg10.jpg" alt="Image10">
+				
+			</div>					
+		</div>
+		
+		<!-- Loading JavaScript Codes. -->
+		<script src="scripts/jquery-2.1.0.js"></script>		
+		<script>
+			// 
+			
+			jQuery(document).ready(function ($) {
+				
+				$('.pagi-container>img').toggleClass('DefaultBigStyle1');
+				$('.pagi-container label:nth-child(3)>img').trigger('click'); // This is to set initial Photo in the Frame.
+				$('.menu ul li').on('click',function(){
+					$('.menu ul li').removeClass();
+					$(this).addClass('menuSelected');
+					index=$(this).data('pattern');
+					console.log('Pattern : '+index+' is Selected..!!');
+					$('.pagi-container>img').removeClass();
+					$('.pagi-container>img').addClass('DefaultBigStyle'+index); // Applying the CSS classes based on User's choice of transition styles.
+				});
+				$('.menu ul li:nth-child(1)').trigger('click');
+			});
+		</script>
+
+
+    <!-- <main>
+        <div class="image--container">hh</div>
+        <div class="image--selection"></div>
+      </main> -->
+
+    <div class="container" id="books">
+
+        <div class="container">
+          <div class="grid">
+            
+            <div class="cell">
+              <img src="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-300mmf_35-56g_ed_vr/img/sample/img_03.jpg" class="book">
+            </div>
+            <div class="cell">
+              <img src="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-300mmf_35-56g_ed_vr/img/sample/img_03.jpg" class="book">
+             </div>        
+            <div class="cell">
+              <img src="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-300mmf_35-56g_ed_vr/img/sample/img_03.jpg" class="book">
+            </div>
+            <div class="cell">
+              <img src="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-300mmf_35-56g_ed_vr/img/sample/img_03.jpg" class="book">
+            </div>
+             <div class="cell">
+              <img src="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-300mmf_35-56g_ed_vr/img/sample/img_03.jpg" class="book">
+            </div>
+             <div class="cell">
+              <img src="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-300mmf_35-56g_ed_vr/img/sample/img_03.jpg" class="book">
+            </div>
+
+            <button onclick={showMore()}> Show all books </button>
+
+             <div class="cell">
+              <img src="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-300mmf_35-56g_ed_vr/img/sample/img_03.jpg" class="book">
+            </div>
+             <div class="cell">
+              <img src="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-300mmf_35-56g_ed_vr/img/sample/img_03.jpg" class="book">
+            </div>
+             <div class="cell">
+              <img src="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-300mmf_35-56g_ed_vr/img/sample/img_03.jpg" class="book">
+            </div>
+        </div>
+            <button>hhh</button>
+
+          <button onclick={showMore()}> Show all books </button>
+        </div>  
+         x
+
+    <img id="mainImage" style="border:3px solid grey" 
+          src="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-300mmf_35-56g_ed_vr/img/sample/img_01.jpg" height="200px" width="240x"/>
+    <br />
+
+<div id="divId" onclick="changeImageOnClick(event)">
+  
+        <img class="imgStyle" src="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-300mmf_35-56g_ed_vr/img/sample/img_01.jpg" />
+        <img class="imgStyle" src="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-300mmf_35-56g_ed_vr/img/sample/img_02.jpg" />
+        <img class="imgStyle" src="https://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-300mmf_35-56g_ed_vr/img/sample/img_03.jpg" />
+</div>
+
+<script>
+
+const image_gallery = document.querySelector(".image--container")
+const image_container = document.querySelector(".image--selection")
+const loading = '<h1 class="loader">Loading...</h1>'
+
+const showImages = () => {
+  // Show loading text if no data
+  if (image_container.children.length === 0) image_container.innerHTML = loading
+  fetch(`https://api.unsplash.com/photos?client_id=${apiKey}`)
+    .then(res => {
+      res.json().then(images => {
+        // Call the function to create the gallery
+        createImageGallery(images)
+      })
+    })
+    .catch(e => {
+      console.log(e)
+    })
+}
+const createImageGallery = images => {
+  let output = ""
+  // Show the first image on the viewer
+  image_gallery.innerHTML = `<img src="${images[0].urls.regular}" class="animate-entrance image--gallery" alt="${images[0].alt_description}">`
+  setTimeout(() => {
+    image_gallery.children[0].classList.remove("animate-entrance")
+  }, 500)
+  // show unselected images
+  images.forEach(({ urls, alt_description }) => {
+    output += `<img src="${urls.regular}" alt="${alt_description}" class="image__item" />`
+  })
+  image_container.innerHTML = output
+}
+const changeImage = e => {
+  // Get the viewer image element
+  const image = image_gallery.children[0]
+  if (e.target.src) {
+    // change the image
+    image.classList.add("animate-entrance")
+    image.src = e.target.src
+    setTimeout(() => {
+      image.classList.remove("animate-entrance")
+    }, 800)
+  }
+}
+
+// Event listeners
+document.addEventListener("DOMContentLoaded", showImages)
+image_container.addEventListener("click", changeImage)
+
+
+
+const showMore = () => {
+  document.querySelectorAll('.cell').forEach(c => c.style.display = 'block')
+}
+
+var images = document.getElementsByTagName("img");
+
+for (var i = 0; i < images.length; i++) {
+  images[i].onmouseover = function() {
+    this.style.cursor = "hand";
+    this.style.borderColor = "red";
+  };
+  images[i].onmouseout = function() {
+    this.style.cursor = "pointer";
+    this.style.borderColor = "grey";
+  };
+}
+
+function changeImageOnClick(event) {
+  // debugger;
+  var targetElement = event.srcElement;
+  // debugger;
+  if (targetElement.tagName === "IMG") {
+    mainImage.src = targetElement.getAttribute("src");
+  }
+}
+
+</script>
+
+</body>
+</html>
+

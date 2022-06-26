@@ -1,0 +1,378 @@
+<body class="bg-light">
+   <div class="container py-4">
+      <h1 class="h2 fw-bold mb-1">Category Products</h1>
+      <nav aria-label="breadcrumb" role="navigation">
+         <ol class="breadcrumb px-0">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Category</a></li>
+            <li class="breadcrumb-item active">Products</li>
+         </ol>
+      </nav>
+   </div>
+   <section class="container">
+      <div class="row g-4 mb-4">
+         <aside class="col-lg-3">
+            <div class="accordion">
+
+               <div class="accordion-item">
+                  <h2 class="accordion-header"
+                      id="accordion_a000">
+                     <button class="accordion-button"
+                             type="button"
+                             data-bs-toggle="collapse"
+                             data-bs-target="#accordion_b000"
+                             aria-expanded="true"
+                             aria-controls="accordion_b000">Categories</button>
+                  </h2>
+                  <div id="accordion_b000"
+                       class="accordion-collapse collapse show"
+                       aria-labelledby="accordion_a000"
+                       data-bs-parent="#accordion_a000">
+                     <div class="accordion-body pt-1">
+
+                        <div class="form mb-3">
+                           <div class="input-group">
+                              <input type="text"
+                                     class="form-control"
+                                     aria-label="Search"
+                                     placeholder="Search" />
+                              <button type="button"
+                                      class="btn btn-primary">
+                                 <i class="zmdi zmdi-search"></i>
+                              </button>
+                           </div>
+                        </div>
+
+                        <ul class="list-unstyled mb-0">
+                           <li><a href="#">Electronics</a></li>
+                           <li><a href="#">Watches </a></li>
+                           <li><a href="#">Cinema</a></li>
+                           <li><a href="#">Clothes</a></li>
+                           <li><a href="#">Home items</a></li>
+                        </ul>
+
+                     </div>
+                  </div>
+               </div>
+
+               <div class="accordion-item mt-0">
+                  <h2 class="accordion-header"
+                      id="accordion_a001">
+                     <button class="accordion-button"
+                             type="button"
+                             data-bs-toggle="collapse"
+                             data-bs-target="#accordion_b001"
+                             aria-expanded="true"
+                             aria-controls="accordion_b001">Price</button>
+                  </h2>
+                  <div id="accordion_b001"
+                       class="accordion-collapse collapse show"
+                       aria-labelledby="accordion_a001"
+                       data-bs-parent="#accordion_a001">
+                     <div class="accordion-body pt-1">
+
+                        <input type="range"
+                               class="form-range" />
+
+                        <div class="row row-cols-md-2 g-2 mb-3">
+                           <div class="col">
+                              <label>Min</label>
+                              <input class="form-control px-1"
+                                     placeholder="0"
+                                     type="number" />
+                           </div>
+                           <div class="col text-end">
+                              <label>Max</label>
+                              <input
+                                     class="form-control px-1"
+                                     placeholder="10000"
+                                     type="number" />
+                           </div>
+                        </div>
+
+                        <button class="btn btn-primary w-100">Apply</button>
+
+                     </div>
+                  </div>
+               </div>
+
+               <div class="accordion-item mt-0">
+                  <h2 class="accordion-header"
+                      id="accordion_a002">
+                     <button class="accordion-button"
+                             type="button"
+                             data-bs-toggle="collapse"
+                             data-bs-target="#accordion_b002"
+                             aria-expanded="true"
+                             aria-controls="accordion_b002">Size</button>
+                  </h2>
+                  <div id="accordion_b002"
+                       class="accordion-collapse collapse show"
+                       aria-labelledby="accordion_a002"
+                       data-bs-parent="#accordion_a002">
+                     <div class="accordion-body pt-1">
+
+                        <div class="row row-cols-3 g-1">
+                           <div class="col">
+                              <input type="checkbox"
+                                     class="btn-check"
+                                     id="sizeCheck_000"
+                                     autocomplete="off">
+                              <label class="btn btn-outline-primary w-100"
+                                     for="sizeCheck_000">XS</label>
+                           </div>
+                           <div class="col">
+                              <input type="checkbox"
+                                     class="btn-check"
+                                     id="sizeCheck_001"
+                                     autocomplete="off">
+                              <label class="btn btn-outline-primary w-100"
+                                     for="sizeCheck_001">S</label>
+                           </div>
+                           <div class="col">
+                              <input type="checkbox"
+                                     class="btn-check"
+                                     id="sizeCheck_002"
+                                     autocomplete="off">
+                              <label class="btn btn-outline-primary w-100"
+                                     for="sizeCheck_002">M</label>
+                           </div>
+                           <div class="col">
+                              <input type="checkbox"
+                                     class="btn-check"
+                                     id="sizeCheck_003"
+                                     autocomplete="off">
+                              <label class="btn btn-outline-primary w-100"
+                                     for="sizeCheck_003">L</label>
+                           </div>
+                           <div class="col">
+                              <input type="checkbox"
+                                     class="btn-check"
+                                     id="sizeCheck_004"
+                                     autocomplete="off">
+                              <label class="btn btn-outline-primary w-100"
+                                     for="sizeCheck_004">XL</label>
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+
+               <div class="accordion-item mt-0">
+                  <h2 class="accordion-header"
+                      id="accordion_a003">
+                     <button class="accordion-button collapsed"
+                             type="button"
+                             data-bs-toggle="collapse"
+                             data-bs-target="#accordion_b003"
+                             aria-expanded="true"
+                             aria-controls="accordion_b003">Rating</button>
+                  </h2>
+                  <div id="accordion_b003"
+                       class="accordion-collapse collapse"
+                       aria-labelledby="accordion_a003"
+                       data-bs-parent="#accordion_a003">
+                     <div class="accordion-body pt-1">
+
+                        <div class="form-check">
+                           <input class="form-check-input"
+                                  type="checkbox"
+                                  value="0"
+                                  id="formCheck_000"
+                                  checked />
+                           <label class="form-check-label"
+                                  for="formCheck_000">Excellent</label>
+                        </div>
+
+                        <div class="form-check">
+                           <input class="form-check-input"
+                                  type="checkbox"
+                                  value="1"
+                                  id="formCheck_001"
+                                  checked />
+                           <label class="form-check-label"
+                                  for="formCheck_001">Great</label>
+                        </div>
+
+                        <div class="form-check">
+                           <input class="form-check-input"
+                                  type="checkbox"
+                                  value="2"
+                                  id="formCheck_002"
+                                  checked />
+                           <label class="form-check-label"
+                                  for="formCheck_002">Okay</label>
+                        </div>
+
+                        <div class="form-check">
+                           <input class="form-check-input"
+                                  type="checkbox"
+                                  value="3"
+                                  id="formCheck_003"
+                                  checked />
+                           <label class="form-check-label"
+                                  for="formCheck_003">Poor</label>
+                        </div>
+
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+         </aside>
+         <main class="col-lg-9">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 mb-4 pb-4 g-4">
+
+               <div class="col">
+                  <div class="card h-100">
+                     <img class="card-img-top" src="https://images.unsplash.com/photo-1631415928999-c375f0bc21c7?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYzMTY0NTI5OQ&amp;ixlib=rb-1.2.1&amp;q=50&amp;fit=crop&amp;w=852&amp;h=480" alt="Placeholder">
+                     <div class="card-body pb-2">
+                        <a href="#"
+                           class="title">Lorem ipsum dolor sit amet</a>
+                     </div>
+                     <div class="card-footer pt-0">
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                           <span class="flex-grow-1">$4.00</span>
+                           <a href="#"
+                              class="btn btn-sm btn-outline-primary">
+                              <span>Add to cart</span>
+                              <i class="zmdi zmdi-shopping-cart"></i>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col">
+                  <div class="card h-100">
+                     <img class="card-img-top" src="https://images.unsplash.com/photo-1628964172854-43747c7b5119?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYzMTY0OTUzNQ&ixlib=rb-1.2.1&q=50&fit=crop&w=852&h=480" alt="Placeholder">
+                     <div class="card-body pb-2">
+                        <a href="#"
+                           class="title">Aenean at ligula vel diam faucibus</a>
+                     </div>
+                     <div class="card-footer pt-0">
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                           <span class="flex-grow-1">$8.99</span>
+                           <a href="#"
+                              class="btn btn-sm btn-outline-primary">
+                              <span>Add to cart</span>
+                              <i class="zmdi zmdi-shopping-cart"></i>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col">
+                  <div class="card h-100">
+                     <img class="card-img-top" src="https://images.unsplash.com/photo-1630750793250-71173d8bfa5e?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYzMTY0NTI5OQ&ixlib=rb-1.2.1&q=50&fit=crop&w=852&h=480" alt="Placeholder">
+                     <div class="card-body pb-2">
+                        <a href="#"
+                           class="title">Duis aute irure dolor in reprehenderit</a>
+                     </div>
+                     <div class="card-footer pt-0">
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                           <span class="flex-grow-1">$456.12</span>
+                           <a href="#"
+                              class="btn btn-sm btn-outline-primary">
+                              <span>Add to cart</span>
+                              <i class="zmdi zmdi-shopping-cart"></i>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col">
+                  <div class="card h-100">
+                     <img class="card-img-top" src="https://images.unsplash.com/photo-1629662182419-960a8596bba0?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYzMTY1MDE1Ng&ixlib=rb-1.2.1&q=50&fit=crop&w=852&h=480" alt="Placeholder">
+                     <div class="card-body pb-2">
+                        <a href="#"
+                           class="title">Duis aute irure dolor in reprehenderit</a>
+                     </div>
+                     <div class="card-footer pt-0">
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                           <span class="flex-grow-1">$79.35</span>
+                           <a href="#"
+                              class="btn btn-sm btn-outline-primary">
+                              <span>Add to cart</span>
+                              <i class="zmdi zmdi-shopping-cart"></i>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col">
+                  <div class="card h-100">
+                     <img class="card-img-top" src="https://images.unsplash.com/photo-1619010549583-aba7425d28dc?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYzMTY1MDE5OQ&ixlib=rb-1.2.1&q=50&fit=crop&w=852&h=480" alt="Placeholder">
+                     <div class="card-body pb-2">
+                        <a href="#"
+                           class="title">Mauris mattis condimentum feugiat</a>
+                     </div>
+                     <div class="card-footer pt-0">
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                           <span class="flex-grow-1">$2.99</span>
+                           <a href="#"
+                              class="btn btn-sm btn-outline-primary">
+                              <span>Add to cart</span>
+                              <i class="zmdi zmdi-shopping-cart"></i>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="col">
+                  <div class="card h-100">
+                     <img class="card-img-top" src="https://images.unsplash.com/photo-1631451095765-2c91616fc9e6?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYzMTY1MDIzOA&ixlib=rb-1.2.1&q=50&fit=crop&w=852&h=480" alt="Placeholder">
+                     <div class="card-body pb-2">
+                        <a href="#"
+                           class="title">Nunc quis mauris accumsan</a>
+                     </div>
+                     <div class="card-footer pt-0">
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                           <span class="flex-grow-1">$1.29</span>
+                           <a href="#"
+                              class="btn btn-sm btn-outline-primary">
+                              <span>Add to cart</span>
+                              <i class="zmdi zmdi-shopping-cart"></i>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+
+            <nav>
+               <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                     <a class="page-link" href="#" aria-label="Previous">
+                        <span class="zmdi zmdi-chevron-left" aria-hidden="true"></span>
+                     </a>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item disabled"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">5</a></li>
+                  <li class="page-item">
+                     <a class="page-link" href="#" aria-label="Next">
+                        <span class="zmdi zmdi-chevron-right" aria-hidden="true"></span>
+                     </a>
+                  </li>
+               </ul>
+            </nav>
+
+         </main>
+      </div>
+   </section>
+
+   <p class="pb-5 text-center small text-muted">
+      <span>Powered by <a href="https://codepen.io/" target="_blank">codepen.io</a></span>
+      <br>
+      <span>Studio KonKon | 2021</span>
+   </p>
+</body>

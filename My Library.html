@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+        <meta name="keywords" content="carousel, jquery, responsive, fluid, elastic, resize, thumbnail, slider" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/elastislide.css" />
+		<link rel="stylesheet" type="text/css" href="css/custom.css" />
+		<script src="js/modernizr.custom.17475.js"></script>
+    <title>My Lib</title>
+</head>
+
+<style>
+
+div.gfg {
+                margin:5px;
+                padding:5px;
+                background-color: green;
+                width: 98%;
+                height: 520px;
+                overflow: auto;
+                text-align:justify;
+            }
+
+    body {
+      position: relative;
+    }
+    .affix {
+      top: 20px;
+      z-index: 9999 !important;
+    }
+    div.col-sm-9 div {
+      height: 250px;
+      font-size: 28px;
+    }
+    #section1 {color: #fff; background-color: #1E88E5;}
+    #section2 {color: #fff; background-color: #673ab7;}
+    #section3 {color: #fff; background-color: #ff9800;}
+    #section41 {color: #fff; background-color: #00bcd4;}
+    #section42 {color: #fff; background-color: #009688;}
+    
+    @media screen and (max-width: 810px) {
+      #section1, #section2, #section3, #section41, #section42  {
+        margin-left: 150px;
+      }
+    }
+
+    .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  position: relative;
+  background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Centered section inside the top navigation */
+.topnav-centered a {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}
+
+/* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav-right {
+    float: none;
+    display: block;
+  }
+
+  .topnav-centered a {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+}
+
+
+
+    </style>
+<style>
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+img{
+    max-width: 100%;
+    vertical-align: middle;
+}
+.gallery{
+   width: 100%;
+   display: block;
+   min-height: 100vh;
+   background-color: #2a2932;
+   padding: 100px 0;
+}
+
+.container{
+    max-width: 1170px;
+    margin:auto;
+}
+
+.gallery .gallery-filter{
+   padding: 0 15px;
+   width: 100%;
+   text-align: center;
+   margin-bottom: 40px;
+}
+.gallery .gallery-filter .filter-item{
+   color: #ffffff;
+   font-size: 17px;
+   border: 2px solid white;
+   text-transform: uppercase;
+   display: inline-block;
+   border-radius: 20px;
+   margin-right: 8px;
+   cursor: pointer;
+   padding: 8px 20px 8px 20px;
+   line-height: 1.2;
+   transition: all 0.3s ease;
+}
+.gallery .gallery-filter .filter-item.active{
+  color: white;
+  border-color : #16b5ef;
+  background: #16b5ef;
+}
+
+.gallery .gallery-item{
+    width: calc(100% / 3);
+    padding: 15px;
+
+}
+.gallery .gallery-item-inner img{
+    width: 100%;
+  border: 3px solid #d4dad9;
+}
+.gallery .gallery-item.show{
+    animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.gallery .gallery-item.hide{
+    display: none;
+}
+@media(max-width: 491px){
+    .gallery .gallery-item{
+        width: 50%;
+    }
+}
+@media(max-width: 667px){
+    .gallery .gallery-item{
+        width: 100%;
+    }
+    .gallery .gallery-filter .filter-item{
+        margin-bottom: 10px;
+    }
+}
+
+</style>
+
+<style>
+
+
+
+</style>
+
+    <body>
+    
+<!--     
+    <body data-spy="scroll" data-target="#myScrollspy" data-offset="15"> -->
+
+        <!-- <div class="container" style="background-color:#2196F3;color:#fff;height:220px;">
+          <h1>Scrollspy & Affix Example</h1>
+          <h3>Fixed vertical sidenav on scroll</h3>
+          <p>Scroll this page to see how the navbar behaves with data-spy="affix" and data-spy="scrollspy".</p>
+          <p>The left menu sticks the page after you have scrolled a specified amount of pixels, and the links in the menu are automatically updated based on scroll position.</p>
+        </div> -->
+     
+
+        <!-- Top navigation -->
+<div class="topnav">
+
+    <!-- Centered link -->
+    <div class="topnav-centered">
+      <a href="#home" class="active">Home</a>
+    </div>
+  
+    <!-- Left-aligned links (default) -->
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+  
+    <!-- Right-aligned links -->
+    <div class="topnav-right">
+      <a href="#search">Search</a>
+      <a href="#about">About</a>
+    </div>
+  
+  </div>
+ 
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+  </div>
+  
+  <div id="main">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+  </div>
+
+
+
+  <!-- <div style="display: flex;  " class="container"> -->
+
+    <!-- <center> -->
+     
+      <div class="gfg">It is a good platform to learn programming.
+      It is an educational website. Prepare for the Recruitment drive
+      of product based companies like Microsoft, Amazon, Adobe etc with
+      a free online placement preparation course. The course focuses
+      on various MCQ's & Coding question likely to be asked in the
+      interviews & make your upcoming placement season efficient and
+      successful. Also, any geeks can help other geeks by writing
+      articles on the GeeksforGeeks, publishing articles follow few
+      steps that are Articles that need little modification/improvement
+      from reviewers are published first. To quickly get your articles
+      reviewed, please refer existing articles, their formatting style,
+      coding style, and try to make you are close to them. In case you
+      are a beginner, you may refer Guidelines to write an Article
+      </div>
+      <!-- </center> -->
+      <!-- </div> -->
+
+
+
+
+
+  <div class="fixed-bar">
+    <!-- Elastislide Carousel -->
+    <ul id="carousel" class="elastislide-list">
+        <li><a href="#"><img src="images/small/1.jpg" alt="image01" /></a></li>
+        <li><a href="#"><img src="images/small/2.jpg" alt="image02" /></a></li>
+        <li><a href="#"><img src="images/small/3.jpg" alt="image03" /></a></li>
+        <li><a href="#"><img src="images/small/4.jpg" alt="image04" /></a></li>
+        <li><a href="#"><img src="images/small/5.jpg" alt="image05" /></a></li>
+        <li><a href="#"><img src="images/small/6.jpg" alt="image06" /></a></li>
+        <li><a href="#"><img src="images/small/7.jpg" alt="image07" /></a></li>
+        <li><a href="#"><img src="images/small/8.jpg" alt="image08" /></a></li>
+        <li><a href="#"><img src="images/small/9.jpg" alt="image09" /></a></li>
+        <li><a href="#"><img src="images/small/10.jpg" alt="image10" /></a></li>
+        <li><a href="#"><img src="images/small/11.jpg" alt="image11" /></a></li>
+        <li><a href="#"><img src="images/small/12.jpg" alt="image12" /></a></li>
+        <li><a href="#"><img src="images/small/13.jpg" alt="image13" /></a></li>
+        <li><a href="#"><img src="images/small/14.jpg" alt="image14" /></a></li>
+        <li><a href="#"><img src="images/small/15.jpg" alt="image15" /></a></li>
+        <li><a href="#"><img src="images/small/16.jpg" alt="image16" /></a></li>
+        <li><a href="#"><img src="images/small/17.jpg" alt="image17" /></a></li>
+        <li><a href="#"><img src="images/small/18.jpg" alt="image18" /></a></li>
+        <li><a href="#"><img src="images/small/19.jpg" alt="image19" /></a></li>
+        <li><a href="#"><img src="images/small/20.jpg" alt="image20" /></a></li>
+    </ul>
+    <!-- End Elastislide Carousel -->
+</div>
+
+
+</div>
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquerypp.custom.js"></script>
+<script type="text/javascript" src="js/jquery.elastislide.js"></script>
+<script type="text/javascript">
+
+$( '#carousel' ).elastislide( {
+minItems : 2
+} );
+
+</script>
+  
+  <script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+  }
+  </script>
+
+<script>
+
+    const filterContainer = document.querySelector(".gallery-filter");
+     const galleryItems = document.querySelectorAll(".gallery-item");
+     filterContainer.addEventListener("click", (event) =>{
+       if(event.target.classList.contains("filter-item")){
+    
+         // deactivate existing active 'filter-item'
+        filterContainer.querySelector(".active").classList.remove("active");
+    
+         // activate new 'filter-item'
+        event.target.classList.add("active");
+    
+        const filterValue = event.target.getAttribute("data-filter");
+    
+        galleryItems.forEach((item) =>{
+    
+           if(item.classList.contains(filterValue) || filterValue === 'all'){
+            item.classList.remove("hide");
+             item.classList.add("show");
+           }
+    
+           else{
+            item.classList.remove("show");
+            item.classList.add("hide");
+           }
+    
+         });
+       }
+     });
+    
+        </script>
+
+</body>
+</html>
